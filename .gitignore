@@ -1,0 +1,24 @@
+# ===== Python =====
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.env
+.env.*
+
+# ===== Virtual Environments =====
+venv/
+.venv/
+
+# ===== Node / Angular =====
+node_modules/
+dist/
+.angular/
+coverage/
+
+# ===== OS =====
+.DS_Store
+Thumbs.db
+
+# ===== Logs =====
+*.log
