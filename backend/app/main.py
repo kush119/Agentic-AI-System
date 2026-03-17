@@ -1,6 +1,7 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from app.api.routes import router
+import certifi_win32
 
 app = FastAPI(
     title="Agentic AI Backend",

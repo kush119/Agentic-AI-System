@@ -4,7 +4,7 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-BASE_URL = "https://opensky-network.org/api"
+BASE_URL = "https://opensky-network.org/"
 
 
 class OpenSkyClient:
