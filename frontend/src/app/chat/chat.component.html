@@ -1,37 +1,38 @@
 <div class="chat-container">
-    <header class="chat-header">
-      <h2>Agentic Assistant</h2>
-      <button (click)="onReset()" [disabled]="sending">Reset</button>
-    </header>
-  
-    <section class="messages">
-      <div *ngFor="let m of messages" class="msg" [ngClass]="m.role">
-        <div class="meta">
-          <span class="role">{{ m.role | titlecase }}</span>
-          <span class="time">{{ m.time | date:'short' }}</span>
-        </div>
-        <div class="bubble"><pre>{{ m.content }}</pre></div>
+  <header class="chat-header">
+    <h2>Ask MCP / FastAPI</h2>
+  </header>
+
+  <section class="messages">
+    <div *ngIf="response" class="msg assistant">
+      <div class="meta">
+        <span class="role">Assistant</span>
       </div>
-  
-      <div *ngIf="sending" class="msg assistant">
-        <div class="meta"><span class="role">Assistant</span></div>
-        <div class="bubble typing">
-          <span class="dot"></span><span class="dot"></span><span class="dot"></span>
-        </div>
+      <div class="bubble">
+        <pre>{{ response | json }}</pre>
       </div>
-    </section>
-  
-    <footer class="composer">
-      <textarea
-        [(ngModel)]="input"
-        (keydown)="onKeydown($event)"
-        [disabled]="sending"
-        placeholder="Type your question…"
-        rows="3"></textarea>
-  
-      <button (click)="onSend()" [disabled]="sending || !input.trim()">Send</button>
-    </footer>
-  
-    <div *ngIf="errorText" class="error">{{ errorText }}</div>
-  </div>
-  
+    </div>
+
+    <div *ngIf="loading" class="msg assistant">
+      <div class="meta">
+        <span class="role">Assistant</span>
+      </div>
+      <div class="bubble typing">
+        <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+      </div>
+    </div>
+  </section>
+
+  <footer class="composer">
+    <input
+      type="text"
+      [(ngModel)]="userQuery"
+      placeholder="Enter your query"
+      class="form-control"
+    />
+
+    <button (click)="sendToBackend()" class="btn btn-primary" [disabled]="loading">
+      Send
+    </button>
+  </footer>
+</div>

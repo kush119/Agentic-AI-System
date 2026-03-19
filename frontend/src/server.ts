@@ -7,6 +7,7 @@ import {
 import express from 'express';
 import { join } from 'node:path';
 
+
 const browserDistFolder = join(import.meta.dirname, '../browser');
 
 const app = express();
@@ -58,7 +59,7 @@ if (isMainModule(import.meta.url) || process.env['pm_id']) {
       throw error;
     }
 
-    console.log(`Node Express server listening on http://localhost:${port}`);
+    console.log(`Angular server listening on http://localhost:${port}`);
   });
 }
 
